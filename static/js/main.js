@@ -4,7 +4,10 @@ import {apiPost, dataHandler} from "./data/dataHandler.js";
 async function init() {
   await boardsManager.loadBoards();
   let createBoardButton = document.querySelector('#create-board');
-  createBoardButton.addEventListener('click', dataHandler.createNewBoard)
+  createBoardButton.addEventListener('click', dataHandler.createNewBoard);
+  document.getElementById("loginSubmit").addEventListener("click", login);
+  document.getElementById("registerSubmit").addEventListener("click", register);
+  document.getElementById("logOut").addEventListener("click", logout);
 }
 
 function session_check() {
@@ -23,10 +26,6 @@ function session_check() {
     document.getElementById("logOut").style.display = "none";
   }
 }
-
-document.getElementById("loginSubmit").addEventListener("click", login)
-document.getElementById("registerSubmit").addEventListener("click", register)
-document.getElementById("logOut").addEventListener("click", logout)
 
 async function login() {
   let username = document.getElementById("uNameLogin").value;
@@ -54,5 +53,5 @@ async function register() {
   await apiPost("/api/register", {"username":username, "password":password});
 }
 
-init();
+await init();
 session_check();

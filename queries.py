@@ -10,10 +10,8 @@ def get_status_by_id(status_id):
     status = data_manager.execute_select(
         """
         SELECT * FROM statuses s
-        WHERE s.id = %(status_id)s
-        ;
+        WHERE s.id = %(status_id)s;
         """, {"status_id": status_id})
-
     return status
 
 
@@ -25,8 +23,7 @@ def get_boards():
     return data_manager.execute_select(
         """
         SELECT * FROM boards
-        order by id
-        ;
+        order by id;
         """
     )
 
@@ -35,8 +32,7 @@ def get_cards_for_board(board_id):
     matching_cards = data_manager.execute_select(
         """
         SELECT * FROM cards
-        WHERE cards.board_id = %(board_id)s
-        ;
+        WHERE cards.board_id = %(board_id)s;
         """, {"board_id": board_id})
     return matching_cards
 
@@ -45,8 +41,7 @@ def login_query(login_name, login_password):
     login_database_check = data_manager.execute_select(
         """
         SELECT * FROM users
-        WHERE users.user_name =  %(login_name)s AND users.password = %(login_password)s
-        ;
+        WHERE users.user_name =  %(login_name)s AND users.password = %(login_password)s;
         """, {"login_name": login_name, "login_password": login_password}, False)
     return login_database_check
 
@@ -55,8 +50,7 @@ def register_query(register_name, register_password):
     data_manager.execute_insert(
         """
         INSERT INTO users
-        VALUES(DEFAULT, %(register_name)s, %(register_password)s)
-        ;
+        VALUES(DEFAULT, %(register_name)s, %(register_password)s);
         """, {"register_name": register_name, "register_password": register_password})
 
 
@@ -64,8 +58,7 @@ def get_statuses_by_board_id(board_id):
     return data_manager.execute_select(
         """
         SELECT * FROM statuses
-        WHERE board_id = %(board_id)s
-        ;
+        WHERE board_id = %(board_id)s;
         """, {"board_id": board_id})
 
 

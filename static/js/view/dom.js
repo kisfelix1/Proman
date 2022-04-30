@@ -1,5 +1,5 @@
 // It uses data_handler.js to visualize elements
-import { dataHandler } from "./data_handler.js";
+import { dataHandler } from "../data/data_handler.js";
 
 export let dom = {
     init: function () {
