@@ -1,4 +1,5 @@
 import { dataHandler } from "../data/dataHandler.js";
+import {htmlFactory, htmlTemplates} from "../view/htmlFactory.js";
 
 export let cardsManager = {
   loadCards: async function (clickEvent) {
@@ -12,7 +13,7 @@ export let cardsManager = {
             if (card.status === status.position ){
                 clickEvent.target.parentElement.parentElement.
                 querySelector(`.board-column[data-status-id="${status.id}"] .board-column-content`)
-                    .innerHTML += cardBuilder(card);
+                    .innerHTML += htmlFactory(htmlTemplates.card)(card);
             }
         }
     }

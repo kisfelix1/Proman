@@ -1,7 +1,7 @@
 import { dataHandler } from "../data/dataHandler.js";
 import { htmlFactory, htmlTemplates } from "../view/htmlFactory.js";
 import { domManager } from "../view/domManager.js";
-import { cardsManager } from "./cardsManager.js";
+import {cardBuilder, cardsManager} from "./cardsManager.js";
 import { dnd } from "./dndManager.js";
 import { apiPut } from "../data/dataHandler.js";
 
@@ -43,14 +43,11 @@ async function addCardButtonHandler(clickEvent){
     let boardId = clickEvent.target.dataset.boardId;
     if(await checkBoardAuthentication(boardId)) {
       let card = await dataHandler.createNewCard(boardId);
-      let cardElement = document.createElement('div');
-      cardElement.classList.add('card');
-      cardElement.dataset.cardId=card.id;
-      cardElement.innerHTML = `<div class="card-remove"><i class="fas fa-trash-alt" data-card-id="${card.id}" data-board-id="${card.board_id}"></i></div>
-                              <div class="card-title">${card.title}</div>
-              </div>`;
+      let carbBuilder = await htmlFactory(htmlTemplates.card);
+      let cardElement = await carbBuilder(card);
+      console.log(cardElement);
       domManager.appendChild(`.board[data-board-id="${boardId}"] > * .board-column-content`,cardElement);
-      document.querySelector(`[data-card-id="${card.id}"]`).addEventListener('click', removeCard);
+      domManager.addEventListener(`[data-card-id="${card.id}"]`,'click', removeCard);
     }
 }
 

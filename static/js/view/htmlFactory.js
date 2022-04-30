@@ -8,6 +8,8 @@ export function htmlFactory(template) {
     switch (template) {
         case htmlTemplates.board:
             return boardBuilder
+        case htmlTemplates.card:
+            return cardBuilder
         default:
             console.error("Undefined template: " + template)
             return () => { return "" }
@@ -23,5 +25,16 @@ async function boardBuilder(board) {
                 <button class="toggle-board-button board-toggle" data-board-id="${board.id}">Show Cards</button>
                 </div>
                 <div class="board-columns"></div>
-            </section>`
+            </section>`;
 }
+async function cardBuilder(card){
+    let cardElement = document.createElement("div");
+    cardElement.classList.add("card");
+    cardElement.dataset.cardId = card.id;
+    cardElement.innerHTML = `<div class="card-remove">
+                    <i class="fas fa-trash-alt" data-card-id="${card.id}" data-board-id="${card.board_id}"></i>
+                </div>
+                <div class="card-title">new card</div>`;
+    return cardElement;
+}
+
