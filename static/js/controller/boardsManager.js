@@ -16,7 +16,7 @@ export let boardsManager = {
     const board = await dataHandler.getBoard(boardId);
     const boardBuilder = await htmlFactory(htmlTemplates.board);
     const content = await boardBuilder(board);
-    domManager.addChild(".board-container", content);
+    domManager.insertChildHTML(".board-container", content);
     domManager.addEventListener(
         `.toggle-board-button[data-board-id="${board.id}"]`,
         "click",
@@ -49,8 +49,7 @@ async function addCardButtonHandler(clickEvent){
       cardElement.innerHTML = `<div class="card-remove"><i class="fas fa-trash-alt" data-card-id="${card.id}" data-board-id="${card.board_id}"></i></div>
                               <div class="card-title">${card.title}</div>
               </div>`;
-      document.querySelector(`.board[data-board-id="${boardId}"]`)
-          .querySelector('.board-column-content').appendChild(cardElement);
+      domManager.appendChild(`.board[data-board-id="${boardId}"] > * .board-column-content`,cardElement);
       document.querySelector(`[data-card-id="${card.id}"]`).addEventListener('click', removeCard);
     }
 }

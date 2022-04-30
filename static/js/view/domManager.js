@@ -1,8 +1,16 @@
 export let domManager = {
-  addChild(parentIdentifier, childContent) {
+  insertChildHTML(parentIdentifier, childHTML) {
     const parent = document.querySelector(parentIdentifier);
     if (parent) {
-      parent.insertAdjacentHTML("beforeend", childContent);
+      parent.insertAdjacentHTML("beforeend", childHTML);
+    } else {
+      console.error("could not find such html element: " + parentIdentifier);
+    }
+  },
+  appendChild(parentIdentifier, child) {
+    const parent = document.querySelector(parentIdentifier);
+    if (parent) {
+      parent.appendChild(child);
     } else {
       console.error("could not find such html element: " + parentIdentifier);
     }
