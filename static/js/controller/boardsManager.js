@@ -78,7 +78,6 @@ async function showCardsButtonHandler(clickEvent) {
 }
 
 async function removeCard(clickEvent){
-  console.log(clickEvent.target)
     if (await checkBoardAuthentication(clickEvent.target.dataset.boardId)) {
       await dataHandler.removeCardById(clickEvent.target.dataset.cardId);
       clickEvent.target.parentElement.parentElement.remove();
