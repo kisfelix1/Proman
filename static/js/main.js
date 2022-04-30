@@ -1,13 +1,13 @@
 import { boardsManager } from "./controller/boardsManager.js";
 import {apiPost, dataHandler} from "./data/dataHandler.js";
+import {domManager} from "./view/domManager.js";
 
 async function init() {
   await boardsManager.loadBoards();
-  let createBoardButton = document.querySelector('#create-board');
-  createBoardButton.addEventListener('click', dataHandler.createNewBoard);
-  document.getElementById("loginSubmit").addEventListener("click", login);
-  document.getElementById("registerSubmit").addEventListener("click", register);
-  document.getElementById("logOut").addEventListener("click", logout);
+  domManager.addEventListener('#create-board','click', dataHandler.createNewBoard);
+  domManager.addEventListener('#loginSubmit','click', login);
+  domManager.addEventListener('#registerSubmit','click', register);
+  domManager.addEventListener('#logOut','click', logout);
 }
 
 function session_check() {
