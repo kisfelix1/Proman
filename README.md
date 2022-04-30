@@ -1,58 +1,25 @@
 # ProMan (sprint 1)
 
-## Story
+## Information about the project
 
-### An email from the client
+The current version of the project was cloned of an educational project.
+It was the result of 2 sprints which lasted one week each, and the developer team consisted of two people.
+The original project can be found at: **https://github.com/CodecoolGlobal/proman-1-python-kisfelix1**
 
-```
-From: Mark Smith <ceo@thepartner.com>
+## Goals
 
-Subject: Welcome on board the ProMan project!
+This website is currently untested, our goal is the following:
+- Clean the code
+- Plan a test strategy based on the **Required Features** listed below.
+- Plan and write manual test cases
+- Write automated integration, API, UI and acceptance tests with further exploratory testing for finding rare bugs.
+- Make a report file (report.xls) which includes detailed bug description, bad practice UX notices and a detailed list of additional/missing features. 
+- Optionally try and fix the bugs and implement the additional/missing features.
 
-In these days, everyone wants to create a new project management tool,
-and we're no exception. We'd like to implement
-something similar to Trello, so we can say we have our own tool!
-
-We call it: ProMan
-
-Jacob, our senior full-stack developer already started to work on the project.
-He made sure to have a proper backlog, and he started to work on the wireframe
-of the application.
-
-Unfortunately Jacob was late one day, he arrived to work at 9:02,
-so we had to fire him. Work starts at 9am, he had to learn it.
-
-Now it's your job to finish the project!
-Send us the sprint backlog ASAP, and we'll meet at the demo!
-
-Remember, we need completed user stories and quality work!
-
-Mark
-```
-
-Oh well, another nice client.
-
-From the attachments, you can see that they imagine the app as a "one pager", where all
-the boards are displayed, and when one is opened, the corresponding cards are shown.
-Their [screen plan](media/web-python/proman-screen-plan.png)
-is not too sophisticated but seems to be a good staring point.
-
-Of course, the customer would love to have an application which is easy to use at first
-glance, where functionality is straightforward, and the application looks nice on different screen sizes if possible.
-As this is [usually](media/web-python/specification-vs-reality.png) the case.
-Let's get this job done.
-
-## What are you going to learn?
-
-- Create an advanced Flask project.
-- Understand the practical usage of AJAX.
-- Master web development.
-- Plan the development of an advanced product.
-
-## Tasks
+## Required Features
 
 1. Create an overview page that lists the existing boards.
-    - If the application server is started, a list of the previously created boards is displayed on the root URL (`/`).
+    - When a logged-out user opens the main page, a list of the public boards appear(`/`). Login/register buttons are visible.
 
 2. Allow the user to add new boards with public access.
     - There is a "Create new board" button on the root URL (`/`).
@@ -161,25 +128,3 @@ Let's get this job done.
 
 25. Each time a new card or board is created, the default properties (statuses, created time, etc.) are given in the backend by using a builder pattern (https://refactoring.guru/design-patterns/creational-patterns).
     - There is a `card` and a `board` builder pattern. The builder is selected using a `factory` pattern.
-
-## General requirements
-
-None
-
-## Hints
-
-- a route which returns json data should start with api. Example `/api/boards` returns json while `/` returns a html template via `render_template`
-- construct your route names using the `rest` principle. Example `/api/boards/<boards_id>`
-- when an entity is a subset of another entity prefix that entity with the parent entity. Example: `/api/boards/<int:board_id>/cards/`, /api/boards/<int:board_id>/statuses/
-- after you implement the `log in` functionality a board will belong to an `user` so the routes should be refactored as ` /api/users/<user_id>/boards/<board_id>/` and ` /api/users/<user_id>/boards/<board_id>/cards` and so on
-
-## Background materials
-
-- <i class="far fa-exclamation"></i> [Callbacks](project/curriculum/materials/pages/javascript/javascript-callbacks.md)
-- <i class="far fa-exclamation"></i> [API, AJAX](project/curriculum/materials/pages/web/the-last-missing-piece-api.md)
-- <i class="far fa-exclamation"></i> [RESTful](project/curriculum/materials/pages/web/restful.md)
-- [Pass by value vs by reference](project/curriculum/materials/pages/javascript/javascript-pass-by-value-vs-reference.md)
-- [Modules](project/curriculum/materials/pages/javascript/javascript-modules.md)
-- [Keyword this](project/curriculum/materials/pages/javascript/javascript-this.md)
-- [Tips & Tricks](project/curriculum/materials/pages/web/web-with-python-tips.md)
-
